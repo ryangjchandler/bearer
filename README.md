@@ -29,10 +29,61 @@ php artisan vendor:publish --provider="RyanChandler\Bearer\BearerServiceProvider
 
 ## Usage
 
+### Creating tokens
+
+To create a new token, you can use the `RyanChandler\Bearer\Models\Token` model.
+
 ```php
-$bearer = new Ryangjchandler\Bearer();
-echo $bearer->echoPhrase('Hello, Spatie!');
+use RyanChandler\Bearer\Models\Token;
+
+$token = Token::create([
+    'token' => Str::random(32),
+]);
 ```
+
+This package doesn't force any particular token strategy. You can use any kind of string or hash as a token.
+
+### Retrieving a `Token` instance
+
+To retreive a `Token` instance from the `token` string, you can use the `RyanChandler\Bearer\Facades\Bearer` facade.
+
+```php
+use RyanChandler\Bearer\Facades\Bearer;
+
+$token = Bearer::find('my-token-string');
+```
+
+### Token expiration
+
+If you would like a token to expire at a particular time, you can use the `expires_at` column.
+
+```php
+$token = Bearer::find('my-token-string');
+
+$token->update([
+    'expires_at' => now()->addWeek(),
+]);
+```
+
+If you try to use the token after this time, it will return an error.
+
+### Limit tokens to a particular domain
+
+If you would like a token to expire at a particular time, you can use the `expires_at` column.
+
+```php
+$token = Bearer::find('my-token-string');
+
+$token->update([
+    'domains' => [
+        'https://laravel.com',
+    ],
+]);
+```
+
+If you attempt to use this token from any domain other than `https://laravel.com`, it will fail and abort.
+
+> **Note**: domain checks include the scheme so be sure to add both cases for HTTP and HTTPS if needed.
 
 ## Testing
 
