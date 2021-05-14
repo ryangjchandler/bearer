@@ -2,7 +2,6 @@
 
 namespace RyanChandler\Bearer;
 
-use Ryangjchandler\Bearer\Commands\BearerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -13,7 +12,6 @@ class BearerServiceProvider extends PackageServiceProvider
         $package
             ->name('bearer')
             ->hasConfigFile()
-            ->hasMigration('create_bearer_table')
-            ->hasCommand(BearerCommand::class);
+            ->hasMigration('create_bearer_table');
     }
 }

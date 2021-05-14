@@ -7,6 +7,7 @@ use DateTime;
 use Illuminate\Support\Str;
 use RyanChandler\Bearer\Models\Token;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class TokenFactory extends Factory
 {
@@ -16,6 +17,15 @@ class TokenFactory extends Factory
     {
         return $this->state([
             'expires_at' => $expiresAt ?? now()
+        ]);
+    }
+
+    public function domains($domains)
+    {
+        $domains = Arr::wrap($domains);
+
+        return $this->state([
+            'domains' => $domains,
         ]);
     }
 

@@ -3,10 +3,13 @@
 namespace RyanChandler\Bearer\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Token extends Model
 {
+    use HasFactory;
+
     protected $table = 'bearer_tokens';
 
     protected $fillable = [
