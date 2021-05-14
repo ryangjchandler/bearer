@@ -2,9 +2,8 @@
 
 namespace RyanChandler\Bearer\Tests;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use RyanChandler\Bearer\Http\Middleware\VerifyBearerToken;
 
 class MiddlewareTest extends TestCase
