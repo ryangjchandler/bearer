@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryangjchandler\Bearer\Commands;
+namespace RyanChandler\Bearer\Commands;
 
 use Illuminate\Console\Command;
 

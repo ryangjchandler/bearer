@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryangjchandler\Bearer\Tests;
+namespace RyanChandler\Bearer\Tests;
 
 class ExampleTest extends TestCase
 {

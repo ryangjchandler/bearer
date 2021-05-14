@@ -1,10 +1,10 @@
 <?php
 
-namespace Ryangjchandler\Bearer;
+namespace RyanChandler\Bearer;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Ryangjchandler\Bearer\Commands\BearerCommand;
+use RyanChandler\Bearer\Commands\BearerCommand;
 
 class BearerServiceProvider extends PackageServiceProvider
 {

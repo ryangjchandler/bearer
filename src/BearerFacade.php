@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryangjchandler\Bearer;
+namespace RyanChandler\Bearer;
 
 use Illuminate\Support\Facades\Facade;
 

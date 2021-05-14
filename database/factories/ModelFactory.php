@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryangjchandler\Bearer\Database\Factories;
+namespace RyanChandler\Bearer\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

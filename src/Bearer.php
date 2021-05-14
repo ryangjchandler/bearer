@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryangjchandler\Bearer;
+namespace RyanChandler\Bearer;
 
 class Bearer
 {

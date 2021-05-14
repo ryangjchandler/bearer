@@ -1,10 +1,10 @@
 <?php
 
-namespace Ryangjchandler\Bearer\Tests;
+namespace RyanChandler\Bearer\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Ryangjchandler\Bearer\BearerServiceProvider;
+use RyanChandler\Bearer\BearerServiceProvider;
 
 class TestCase extends Orchestra
 {
