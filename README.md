@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/bearer/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ryangjchandler/bearer/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/bearer.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/bearer)
 
-Minimalistic token-based authentication for Laravel API endpoints.
+Minimalistic token-based authorization for Laravel API endpoints.
 
 ## Installation
 
