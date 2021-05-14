@@ -87,7 +87,7 @@ If you try to use the token after this time, it will return an error.
 
 ### Limit tokens to a particular domain
 
-If you would like a token to expire at a particular time, you can use the `expires_at` column.
+Token usage can be restricted to a particular domain. Bearer uses the scheme and host from the request to determine if the token is valid or not.
 
 ```php
 $token = Bearer::find('my-token-string');
