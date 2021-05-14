@@ -38,7 +38,7 @@ class TokenTest extends TestCase
 
         $this->assertSame(['https://example.com'], $token->domains->toArray());
 
-        $token->domains[] = 'https://laravel.com';
+        $token->addDomain('https://laravel.com');
 
         $this->assertSame(['https://example.com', 'https://laravel.com'], $token->domains->toArray());
     }
