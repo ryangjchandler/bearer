@@ -34,4 +34,15 @@ class Token extends Model
     {
         $this->expires_at = $expired ? now() : null;
     }
+
+    public function addDomain(string $domain)
+    {
+        if (! $this->domains) {
+            $this->domains = [];
+        }
+
+        $this->domains[] = $domain;
+
+        return $this;
+    }
 }

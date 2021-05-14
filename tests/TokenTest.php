@@ -15,6 +15,19 @@ class TokenTest extends TestCase
         ]);
     }
 
+    public function test_it_can_have_domains()
+    {
+        $token = Token::factory()->create();
+
+        $token->addDomain('https://example.com');
+
+        $this->assertSame(['https://example.com'], $token->domains->toArray());
+
+        $token->addDomain('https://laravel.com');
+
+        $this->assertSame(['https://example.com', 'https://laravel.com'], $token->domains->toArray());
+    }
+
     public function test_it_can_cast_domains_to_array()
     {
         $token = Token::factory()
