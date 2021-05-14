@@ -1,2 +1,2 @@
 providers:
-  - Ryangjchandler\Bearer\BearerServiceProvider
+  - RyanChandler\Bearer\BearerServiceProvider
