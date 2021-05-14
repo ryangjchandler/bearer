@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('token');
             $table->text('domains')->nullable();
+            $table->datetime('expires_at')->nullable();
             $table->timestamps();
-            $table->timestamp('expires_at')->nullable();
         });
     }
 };
