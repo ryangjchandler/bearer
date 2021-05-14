@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('bearer_table', function (Blueprint $table) {
+        Schema::create('bearer_tokens', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->string('token');
+            $table->text('domains')->nullable();
             $table->timestamps();
+            $table->timestamp('expires_at')->nullable();
         });
     }
 };
