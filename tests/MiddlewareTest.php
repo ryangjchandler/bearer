@@ -20,14 +20,14 @@ class MiddlewareTest extends TestCase
 
     public function test_it_aborts_with_no_token()
     {
-        $this->get('/bearer')->assertStatus(403);
+        $this->get('/bearer')->assertStatus(401);
     }
 
     public function test_it_aborts_with_invalid_token()
     {
         $this->get('/bearer', [
             'Authorization' => 'Bearer '.Str::random(32),
-        ])->assertStatus(403);
+        ])->assertStatus(401);
     }
 
     public function test_it_aborts_with_expired_token()
@@ -36,7 +36,7 @@ class MiddlewareTest extends TestCase
 
         $this->get('/bearer', [
             'Authorization' => 'Bearer ' . $token->token,
-        ])->assertStatus(403);
+        ])->assertStatus(401);
     }
 
     public function test_it_does_not_abort_with_valid_token()
@@ -56,7 +56,7 @@ class MiddlewareTest extends TestCase
 
         $this->get('/bearer', [
             'Authorization' => 'Bearer ' . $token->token,
-        ])->assertStatus(403);
+        ])->assertStatus(401);
     }
 
     public function test_it_does_not_abort_for_valid_domain()

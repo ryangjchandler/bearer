@@ -54,8 +54,8 @@ class VerifyBearerToken
     protected function abort(string $message)
     {
         return response()->json([
-            'status' => 403,
+            'status' => 401,
             'message' => $message,
-        ], 403);
+        ], 401);
     }
 }
