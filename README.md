@@ -53,6 +53,24 @@ use RyanChandler\Bearer\Facades\Bearer;
 $token = Bearer::find('my-token-string');
 ```
 
+### Using a token in a request
+
+Bearer uses the `Authorization` header of a request to retreive the token instance. You should format it like so:
+
+```
+Authorization: Bearer my-token-string
+```
+
+### Verifying tokens
+
+To verify a token, add the `RyanChandler\Bearer\Http\Middleware\VerifyBearerToken` middleware to your API route.
+
+```php
+use RyanChandler\Bearer\Http\Middleware\VerifyBearerToken;
+
+Route::get('/endpoint', MyEndpointController::class)->middleware(VerifyBearerToken::class);
+```
+
 ### Token expiration
 
 If you would like a token to expire at a particular time, you can use the `expires_at` column.
