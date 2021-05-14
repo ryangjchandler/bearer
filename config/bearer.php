@@ -2,6 +2,6 @@
 
 return [
 
-    'verify_domains' => env('BEARER_VERIFY_DOMAINS'),
+    'verify_domains' => env('BEARER_VERIFY_DOMAINS', true),
 
 ];

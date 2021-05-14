@@ -4,8 +4,8 @@ namespace RyanChandler\Bearer\Tests;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use RyanChandler\Bearer\Http\Middleware\VerifyBearerToken;
+use RyanChandler\Bearer\Models\Token;
 
 class MiddlewareTest extends TestCase
 {
@@ -28,5 +28,45 @@ class MiddlewareTest extends TestCase
         $this->get('/bearer', [
             'Authorization' => 'Bearer '.Str::random(32),
         ])->assertStatus(403);
+    }
+
+    public function test_it_aborts_with_expired_token()
+    {
+        $token = Token::factory()->expired()->create();
+
+        $this->get('/bearer', [
+            'Authorization' => 'Bearer ' . $token->token,
+        ])->assertStatus(403);
+    }
+
+    public function test_it_does_not_abort_with_valid_token()
+    {
+        $token = Token::factory()->create();
+
+        $this->get('/bearer', [
+            'Authorization' => 'Bearer ' . $token->token,
+        ])->assertStatus(200);
+    }
+
+    public function test_it_aborts_for_invalid_domain()
+    {
+        $token = Token::factory()->domains([
+            'http://example.com',
+        ])->create();
+
+        $this->get('/bearer', [
+            'Authorization' => 'Bearer ' . $token->token,
+        ])->assertStatus(403);
+    }
+
+    public function test_it_does_not_abort_for_valid_domain()
+    {
+        $token = Token::factory()->domains([
+            'http://localhost',
+        ])->create();
+
+        $this->get('/bearer', [
+            'Authorization' => 'Bearer ' . $token->token,
+        ])->assertStatus(200);
     }
 }
