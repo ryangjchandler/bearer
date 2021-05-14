@@ -20,22 +20,42 @@ class VerifyBearerToken
     {
         $token = $request->header('Authorization');
 
-        abort_if(! $token, 403);
+        if (! $token) {
+            return $this->abort('Please provide a valid token.');
+        }
 
         $token = Str::after($token, 'Bearer ');
 
-        abort_if(! $token, 403);
+        if (! $token) {
+            return $this->abort('Please provide a valid token.');
+        }
 
         $token = $this->bearer->find($token);
 
-        abort_if(! $token || $token->expired, 403);
+        if (! $token) {
+            return $this->abort('Please provide a valid token.');
+        }
+
+        if ($token->expired) {
+            return $this->abort('This token has expired.');
+        }
 
         if (! config('bearer.verify_domains') || ! $token->domains) {
             return $next($request);
         }
 
-        abort_if(! in_array($request->getSchemeAndHttpHost(), $token->domains->toArray()), 403);
+        if (! in_array($request->getSchemeAndHttpHost(), $token->domains->toArray())) {
+            return $this->abort('This token cannot be used with your domain.');
+        }
 
         return $next($request);
+    }
+
+    protected function abort(string $message)
+    {
+        return response()->json([
+            'status' => 403,
+            'message' => $message,
+        ], 403);
     }
 }
