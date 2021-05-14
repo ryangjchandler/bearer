@@ -3,8 +3,9 @@
 namespace RyanChandler\Bearer\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use RyanChandler\Bearer\Bearer;
 
 class VerifyBearerToken
 {
