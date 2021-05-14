@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) ryangjchandler <ryangjchandler@gmail.com>
+Copyright (c) Ryan Chandler <support@ryangjchandler.co.uk>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
