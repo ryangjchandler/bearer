@@ -2,8 +2,8 @@
 
 namespace RyanChandler\Bearer\Tests;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RyanChandler\Bearer\Http\Middleware\VerifyBearerToken;
 use RyanChandler\Bearer\Models\Token;
 
