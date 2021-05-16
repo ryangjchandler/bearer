@@ -99,6 +99,14 @@ $token->update([
 ]);
 ```
 
+Or just use the class's helper methods.
+
+```php
+$token = Bearer::find('my-token-string');
+
+$token->addWeeks(1)->save();
+```
+
 If you try to use the token after this time, it will return an error.
 
 ### Limit tokens to a particular domain
