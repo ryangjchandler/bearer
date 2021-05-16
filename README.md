@@ -41,7 +41,23 @@ $token = Token::create([
 ]);
 ```
 
-This package doesn't force any particular token strategy. You can use any kind of string or hash as a token.
+Alternatively, you can use the `RyanChandler\Bearer\Facades\Bearer` facade to `generate` a token.
+
+```php
+use RyanChandler\Bearer\Facades\Bearer;
+
+$token = Bearer::generate(domains: [], expiresAt: null);
+```
+
+By default, Bearer uses time-ordered UUIDs for token strings. You can modify this behaviour by passing a `Closure` to `Bearer::generateTokenUsing`. This function must return a string for storage to the database.
+
+```php
+use RyanChandler\Bearer\Facades\Bearer;
+
+Bearer::generateTokenUsing(static function (): string {
+    return (string) Str::orderedUuid();
+});
+```
 
 ### Retrieving a `Token` instance
 
