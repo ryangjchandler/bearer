@@ -2,13 +2,16 @@
 
 namespace RyanChandler\Bearer\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use RyanChandler\Bearer\Concerns\InteractsWithExpiration;
 
 class Token extends Model
 {
     use HasFactory;
+    use InteractsWithExpiration;
 
     protected $table = 'bearer_tokens';
 
@@ -42,6 +45,13 @@ class Token extends Model
         }
 
         $this->domains[] = $domain;
+
+        return $this;
+    }
+
+    public function expires(DateTimeInterface $expiresAt)
+    {
+        $this->expires_at = $expiresAt;
 
         return $this;
     }
