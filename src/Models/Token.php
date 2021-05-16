@@ -49,7 +49,7 @@ class Token extends Model
         return $this;
     }
 
-    public function expires(DateTimeInterface $expiresAt)
+    public function expires(DateTimeInterface $expiresAt): Token
     {
         $this->expires_at = $expiresAt;
 
