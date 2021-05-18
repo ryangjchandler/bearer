@@ -2,7 +2,6 @@
 
 namespace RyanChandler\Bearer\Tests;
 
-use Carbon\Carbon;
 use RyanChandler\Bearer\Facades\Bearer;
 
 class BearerTest extends TestCase
