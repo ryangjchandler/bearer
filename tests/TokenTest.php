@@ -61,10 +61,9 @@ class TokenTest extends TestCase
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
-        Carbon::withTestNow(
-            now()->addMonths($minutes + 1),
-            fn () => $this->assertTrue($token->expired)
-        );
+        Carbon::setTestNow(now()->addMinutes($minutes + 1));
+        $this->assertTrue($token->expired);
+        Carbon::setTestNow();
     }
 
     public function test_it_can_interacts_with_expiration_time_in_hours()
@@ -75,10 +74,9 @@ class TokenTest extends TestCase
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
-        Carbon::withTestNow(
-            now()->addMonths($hours + 1),
-            fn () => $this->assertTrue($token->expired)
-        );
+        Carbon::setTestNow(now()->addHours($hours + 1));
+        $this->assertTrue($token->expired);
+        Carbon::setTestNow();
     }
 
     public function test_it_can_interacts_with_expiration_time_in_days()
@@ -89,10 +87,9 @@ class TokenTest extends TestCase
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
-        Carbon::withTestNow(
-            now()->addMonths($days + 1),
-            fn () => $this->assertTrue($token->expired)
-        );
+        Carbon::setTestNow(now()->addDays($days + 1));
+        $this->assertTrue($token->expired);
+        Carbon::setTestNow();
     }
 
     public function test_it_can_interacts_with_expiration_time_in_weeks()
@@ -103,10 +100,9 @@ class TokenTest extends TestCase
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
-        Carbon::withTestNow(
-            now()->addMonths($weeks + 1),
-            fn () => $this->assertTrue($token->expired)
-        );
+        Carbon::setTestNow(now()->addWeeks($weeks + 1));
+        $this->assertTrue($token->expired);
+        Carbon::setTestNow();
     }
 
     public function test_it_can_interacts_with_expiration_time_in_months()
@@ -117,9 +113,8 @@ class TokenTest extends TestCase
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
-        Carbon::withTestNow(
-            now()->addMonths($months + 1),
-            fn () => $this->assertTrue($token->expired)
-        );
+        Carbon::setTestNow(now()->addMonths($months + 1));
+        $this->assertTrue($token->expired);
+        Carbon::setTestNow();
     }
 }
