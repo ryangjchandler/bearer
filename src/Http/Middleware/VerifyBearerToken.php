@@ -40,7 +40,7 @@ class VerifyBearerToken
             return $this->abort('This token has expired.');
         }
 
-        if (! config('bearer.verify_domains') || ! $token->domains) {
+        if (! config('bearer.verify_domains') || ! $token->domains || $token->domains->collect()->isEmpty()) {
             return $next($request);
         }
 
