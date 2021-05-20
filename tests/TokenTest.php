@@ -57,7 +57,7 @@ class TokenTest extends TestCase
     {
         $token = Token::factory()->expired()->create();
 
-        $token->addMinutes($minutes = rand(1, 7));
+        $token->addMinutes($minutes = rand(1, 5));
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
@@ -70,7 +70,7 @@ class TokenTest extends TestCase
     {
         $token = Token::factory()->expired()->create();
 
-        $token->addHours($hours = rand(1, 7));
+        $token->addHours($hours = rand(1, 5));
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
@@ -83,7 +83,7 @@ class TokenTest extends TestCase
     {
         $token = Token::factory()->expired()->create();
 
-        $token->addDays($days = rand(1, 7));
+        $token->addDays($days = rand(1, 5));
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
@@ -96,7 +96,7 @@ class TokenTest extends TestCase
     {
         $token = Token::factory()->expired()->create();
 
-        $token->addWeeks($weeks = rand(1, 7));
+        $token->addWeeks($weeks = rand(1, 5));
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
@@ -109,7 +109,7 @@ class TokenTest extends TestCase
     {
         $token = Token::factory()->expired()->create();
 
-        $token->addMonths($months = rand(1, 7));
+        $token->addMonths($months = rand(1, 5));
         $this->assertFalse($token->expired);
         $this->assertTrue($token->expires_at->isFuture());
 
