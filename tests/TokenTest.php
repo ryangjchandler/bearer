@@ -2,8 +2,8 @@
 
 namespace RyanChandler\Bearer\Tests;
 
-use RyanChandler\Bearer\Models\Token;
 use Illuminate\Support\Carbon;
+use RyanChandler\Bearer\Models\Token;
 
 class TokenTest extends TestCase
 {
