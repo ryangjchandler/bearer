@@ -48,6 +48,13 @@ class MiddlewareTest extends TestCase
         ])->assertStatus(200);
     }
 
+    public function test_it_does_not_abort_with_valid_token_in_body()
+    {
+        $token = Token::factory()->create();
+
+        $this->get('/bearer?token='.$token->token)->assertStatus(200);
+    }
+
     public function test_it_aborts_for_invalid_domain()
     {
         $token = Token::factory()->domains([
