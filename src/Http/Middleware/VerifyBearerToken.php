@@ -18,16 +18,10 @@ class VerifyBearerToken
 
     public function handle(Request $request, Closure $next)
     {
-        $token = $request->header('Authorization');
+        $token = $this->findTokenStringFromRequest($request);
 
-        if (! $token) {
-            return $this->abort('Please provide a valid token.');
-        }
-
-        $token = Str::after($token, 'Bearer ');
-
-        if (! $token) {
-            return $this->abort('Please provide a valid token.');
+        if (! is_string($token)) {
+            return $token;
         }
 
         $token = $this->bearer->find($token);
@@ -49,6 +43,27 @@ class VerifyBearerToken
         }
 
         return $next($request);
+    }
+
+    protected function findTokenStringFromRequest(Request $request)
+    {
+        if ($request->has('token')) {
+            return $request->input('token');
+        }
+
+        $token = $request->header('Authorization');
+
+        if (! $token) {
+            return $this->abort('Please provide a valid token.');
+        }
+
+        $token = Str::after($token, 'Bearer ');
+
+        if (! $token) {
+            return $this->abort('Please provide a valid token.');
+        }
+
+        return $token;
     }
 
     protected function abort(string $message)
