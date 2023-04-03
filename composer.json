@@ -16,18 +16,18 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "illuminate/contracts": "^9.0",
-        "illuminate/database": "^9.0",
-        "illuminate/http": "^9.0",
-        "spatie/laravel-package-tools": "^1.11"
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0",
+        "illuminate/database": "^10.0",
+        "illuminate/http": "^10.0",
+        "spatie/laravel-package-tools": "^1.14"
     },
     "require-dev": {
-        "brianium/paratest": "^6.2",
-        "nunomaduro/collision": "^6.0",
-        "orchestra/testbench": "^7.0",
-        "phpunit/phpunit": "^9.3",
-        "spatie/laravel-ray": "^1.9"
+        "brianium/paratest": "^6.8",
+        "nunomaduro/collision": "^6.1",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ray": "^1.32"
     },
     "autoload": {
         "psr-4": {
