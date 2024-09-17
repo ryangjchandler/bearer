@@ -46,7 +46,7 @@ Alternatively, you can use the `RyanChandler\Bearer\Facades\Bearer` facade to `g
 ```php
 use RyanChandler\Bearer\Facades\Bearer;
 
-$token = Bearer::generate(domains: [], expiresAt: null);
+$token = Bearer::generate(domains: [], expiresAt: null, description: null);
 ```
 
 By default, Bearer uses time-ordered UUIDs for token strings. You can modify this behaviour by passing a `Closure` to `Bearer::generateTokenUsing`. This function must return a string for storage to the database.
@@ -61,7 +61,7 @@ Bearer::generateTokenUsing(static function (): string {
 
 ### Retrieving a `Token` instance
 
-To retreive a `Token` instance from the `token` string, you can use the `RyanChandler\Bearer\Facades\Bearer` facade.
+To retrieve a `Token` instance from the `token` string, you can use the `RyanChandler\Bearer\Facades\Bearer` facade.
 
 ```php
 use RyanChandler\Bearer\Facades\Bearer;
@@ -126,6 +126,21 @@ $token->update([
 If you attempt to use this token from any domain other than `https://laravel.com`, it will fail and abort.
 
 > **Note**: domain checks include the scheme so be sure to add both cases for HTTP and HTTPS if needed.
+
+### Set a token description
+
+You can optionally set a description for the token. 
+
+```php
+$token = Bearer::find('my-token-string');
+
+$token->update([
+    'description' => 'Example description for the token.',
+]);
+```
+
+> **Note**: The description field accepts a maximum of 255 characters.
+
 
 ## Testing
 
