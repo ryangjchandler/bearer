@@ -34,13 +34,14 @@ class Bearer
         return $this;
     }
 
-    public function generate(array $domains = [], DateTimeInterface $expiresAt = null): Token
+    public function generate(array $domains = [], DateTimeInterface $expiresAt = null, ?string $description = null): Token
     {
         $callback = $this->generateTokenCallback;
 
         return Token::create([
             'token' => $callback(),
             'domains' => $domains,
+            'description' => $description,
             'expires_at' => $expiresAt,
         ]);
     }

@@ -38,4 +38,16 @@ class BearerTest extends TestCase
 
         $this->assertTrue($time->equalTo($token->expires_at));
     }
+
+    public function test_it_can_create_token_with_description()
+    {
+        $description = "Example description for the token.";
+
+        $token = Bearer::generate([], null, $description);
+
+        $this->assertDatabaseHas('bearer_tokens', [
+            'token' => $token->token,
+            'description' => $description,
+        ]);
+    }
 }

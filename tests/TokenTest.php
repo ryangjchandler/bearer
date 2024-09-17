@@ -117,4 +117,21 @@ class TokenTest extends TestCase
         $this->assertTrue($token->expired);
         Carbon::setTestNow();
     }
+
+    public function test_it_can_have_description()
+    {
+        $token = Token::factory()->create();
+
+        $description = 'Example description for the token.';
+
+        $token->setDescription($description);
+
+        $this->assertSame($description, $token->description);
+
+        $newDescription = 'New example description for the token.';
+
+        $token->update(['description' => $newDescription]);
+
+        $this->assertSame($newDescription, $token->description);
+    }
 }
