@@ -34,13 +34,18 @@ class Bearer
         return $this;
     }
 
-    public function generate(array $domains = [], DateTimeInterface $expiresAt = null): Token
+    public function generate(array $domains = [], ?DateTimeInterface $expiresAt = null, ?string $description = null): Token
     {
+        if ($description !== null && strlen($description) > 255) {
+            throw new \InvalidArgumentException('Token descriptions must be <= 255 characters.');
+        }
+
         $callback = $this->generateTokenCallback;
 
         return Token::create([
             'token' => $callback(),
             'domains' => $domains,
+            'description' => $description,
             'expires_at' => $expiresAt,
         ]);
     }

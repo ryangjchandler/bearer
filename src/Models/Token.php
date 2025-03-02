@@ -16,7 +16,7 @@ class Token extends Model
     protected $table = 'bearer_tokens';
 
     protected $fillable = [
-        'token', 'domains', 'expires_at',
+        'token', 'domains', 'description', 'expires_at',
     ];
 
     protected $casts = [
@@ -55,4 +55,12 @@ class Token extends Model
 
         return $this;
     }
+
+    public function setDescription(string $description): Token
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
 }

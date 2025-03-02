@@ -29,6 +29,13 @@ class TokenFactory extends Factory
         ]);
     }
 
+    public function description(string $description)
+    {
+        return $this->state([
+            'description' => $description,
+        ]);
+    }
+
     public function definition()
     {
         return [
